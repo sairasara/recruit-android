@@ -6,5 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity">
 
+    <!--    Adding the recycle view control to list down transactions.-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/transaction_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
