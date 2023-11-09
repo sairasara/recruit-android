@@ -14,9 +14,14 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatterBuilder
 
 class TransactionItemAdapter(private val context: Context,
-                             private val transactionsList: Array<Transaction>,
                              private val onItemClick: (Transaction) -> Unit)
     : RecyclerView.Adapter<TransactionItemAdapter.ViewHolder>() {
+
+    private var transactionsList = mutableListOf<Transaction>()
+    fun setTransactionsList(transactionsList: Array<Transaction>) {
+        this.transactionsList = transactionsList.toMutableList()
+        notifyDataSetChanged()
+    }
 
     // create new views
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
