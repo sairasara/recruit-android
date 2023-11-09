@@ -1,5 +1,12 @@
 <resources>
     <string name="app_name">Transactions</string>
+    <string name="details">Details</string>
     <string name="creditPrefix">+ $</string>
     <string name="debitPrefix">- $</string>
+    <string name="summary">summary</string>
+    <string name="credit">credit</string>
+    <string name="debit">debit</string>
+    <string name="transactionDate">transactionDate</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
 </resources>

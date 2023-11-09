@@ -1,5 +1,6 @@
 package nz.co.test.transactions.activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -29,7 +30,14 @@ class MainActivity : AppCompatActivity() {
                 withContext(Dispatchers.Main){
 
                     //Update UI
-                    val transactionItemAdapter = TransactionItemAdapter(this@MainActivity, transactionsResponse.sortedByDescending { it.transactionDate }.toTypedArray())
+                    val transactionItemAdapter = TransactionItemAdapter(this@MainActivity, transactionsResponse.sortedByDescending { it.transactionDate }.toTypedArray()){
+                        val intent = Intent(this@MainActivity, TransactionItemDetailActivity::class.java)
+                        intent.putExtra(getString(R.string.summary), it.summary)
+                        intent.putExtra(getString(R.string.transactionDate), it.transactionDate)
+                        intent.putExtra(getString(R.string.credit), it.credit.toString())
+                        intent.putExtra(getString(R.string.debit), it.debit.toString())
+                        startActivity(intent)
+                    }
                     val recyclerView: RecyclerView = findViewById(R.id.recyclerview)
                     recyclerView.adapter = transactionItemAdapter
                 }

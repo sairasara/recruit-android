@@ -14,7 +14,8 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatterBuilder
 
 class TransactionItemAdapter(private val context: Context,
-                             private val transactionsList: Array<Transaction>)
+                             private val transactionsList: Array<Transaction>,
+                             private val onItemClick: (Transaction) -> Unit)
     : RecyclerView.Adapter<TransactionItemAdapter.ViewHolder>() {
 
     // create new views
@@ -23,7 +24,9 @@ class TransactionItemAdapter(private val context: Context,
         val view = LayoutInflater.from(viewGroup.context)
             .inflate(R.layout.transaction_item, viewGroup, false)
 
-        return ViewHolder(view)
+        return ViewHolder(view){
+            onItemClick(transactionsList[it])
+        }
     }
 
     // binds the list items to a view
@@ -52,9 +55,16 @@ class TransactionItemAdapter(private val context: Context,
     }
 
     // Holds the views for adding text
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View,onItemClicked: (Int) -> Unit) : RecyclerView.ViewHolder(itemView) {
         val summaryText: TextView = itemView.findViewById(R.id.summaryText)
         val dateText: TextView = itemView.findViewById(R.id.transactionDateText)
         val creditDebitText: TextView = itemView.findViewById(R.id.creditDebitText)
+
+        init {
+            itemView.setOnClickListener {
+                // this will be called only once.
+                onItemClicked(bindingAdapterPosition)
+            }
+        }
     }
 }
