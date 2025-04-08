@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import nz.co.test.transactions.services.TransactionsService
+import nz.co.test.transactions.domain.repository.TransactionsService
 import retrofit2.Retrofit
 
 @Module
