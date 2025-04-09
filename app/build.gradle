@@ -76,7 +76,12 @@ dependencies {
     implementation (libs.androidx.hilt.navigation.compose)
     implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation (libs.androidx.lifecycle.livedata.ktx)
-
+    implementation libs.androidx.runtime.livedata
     implementation(libs.kotlinx.coroutines.android)
+
+    // AndroidX Test Core library
+    testImplementation (libs.androidx.core.testing)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.core)
 
 }

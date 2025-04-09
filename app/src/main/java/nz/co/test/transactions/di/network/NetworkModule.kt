@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import nz.co.test.transactions.domain.repository.TransactionsService
+import nz.co.test.transactions.data.api.TransactionsService
 import nz.co.test.transactions.utils.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
