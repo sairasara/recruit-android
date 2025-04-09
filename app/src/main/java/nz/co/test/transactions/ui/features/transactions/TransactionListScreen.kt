@@ -27,6 +27,7 @@ import androidx.navigation.NavController
 import nz.co.test.transactions.R
 import nz.co.test.transactions.domain.model.Transaction
 import nz.co.test.transactions.ui.viewmodel.TransactionViewModel
+import nz.co.test.transactions.navigation.NavigationItem
 import java.math.BigDecimal
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatterBuilder
@@ -61,6 +62,7 @@ fun TransactionListScreen(
             }  else {
                 LazyColumn { items(transactions) { transaction ->
                     TransactionItem(transaction = transaction) {
+                        navController.navigate(NavigationItem.TransactionDetail.createRoute(transaction.id))
                     } }
                 }
             }

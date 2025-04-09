@@ -2,4 +2,10 @@
     <string name="app_name">Transactions</string>
     <string name="creditPrefix">+ $</string>
     <string name="debitPrefix">- $</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="amount">Amount</string>
+    <string name="gst">GST (15%)</string>
+    <string name="transactionDateText">Transaction Date</string>
+    <string name="talkToUs">Talk to us</string>
 </resources>

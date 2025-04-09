@@ -31,4 +31,8 @@ class TransactionViewModel @Inject constructor(
            }
         }
     }
+
+    fun getTransactionById(id: Int?): Transaction? {
+        return transactions.value?.find { it.id == id }
+    }
 }

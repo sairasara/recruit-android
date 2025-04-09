@@ -67,4 +67,25 @@ class TransactionViewModelTest {
         viewModel = TransactionViewModel(repository) // Re-initialize to pick up the new LiveData
         Assert.assertEquals(errorState, viewModel.networkError.value)
     }
+
+    @Test
+    fun `getTransactionById should return a transaction when ID matches`() {
+        val mockRepository = Mockito.mock(TransactionRepository::class.java)
+        val mockTransactionList = listOf(
+            Transaction(1,  "2025-03-10T06:24:06", "Description 1", BigDecimal(10.50),  BigDecimal(0)),
+        )
+        val transactionsLiveData = MutableLiveData(mockTransactionList)
+        Mockito.`when`(mockRepository.transactions).thenReturn(transactionsLiveData)
+
+        val viewModel = TransactionViewModel(mockRepository)
+
+        val result = viewModel.getTransactionById(1)
+
+        Assert.assertNotNull(result)
+        Assert.assertEquals(1, result?.id)
+        Assert.assertEquals("Description 1", result?.summary)
+        Assert.assertEquals(BigDecimal(10.50), result?.debit)
+        Assert.assertEquals( BigDecimal(0), result?.credit)
+        Assert.assertEquals("2025-03-10T06:24:06", result?.transactionDate)
+    }
 }
